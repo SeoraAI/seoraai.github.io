@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seora AI — SEO & Profit Tools for Online Sellers</title>
+    <meta name="description" content="AI-powered SEO generator and profit calculator for Etsy, Amazon, eBay, Shopify, and TikTok Shop sellers. Generate optimized titles, tags, and descriptions in seconds.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a2e;
+            --warm: #f5f0eb;
+            --cream: #faf8f5;
+            --accent: #c8a87c;
+            --accent-dark: #b8956a;
+            --soft-gray: #8a8a9a;
+            --border: #e8e4df;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 248, 245, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--soft-gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        .nav-cta {
+            background: var(--ink) !important;
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(26, 26, 46, 0.15);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 168, 124, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -15%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 168, 124, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--warm);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-dark);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--soft-gray);
+            line-height: 1.7;
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--ink);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 26, 46, 0.2);
+        }
+
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--ink);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1.5px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        /* PLATFORMS */
+        .platforms {
+            text-align: center;
+            padding: 3rem 2rem 5rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .platforms p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--soft-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .platform-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .platform-logos span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--soft-gray);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .platform-logos span:hover {
+            opacity: 1;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-dark);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--soft-gray);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: var(--cream);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(26, 26, 46, 0.06);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--ink);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            color: var(--soft-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.4;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            color: var(--soft-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* PRICING */
+        .pricing {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--cream);
+        }
+
+        .pricing-card.featured {
+            background: var(--ink);
+            color: var(--white);
+            border-color: var(--ink);
+            position: relative;
+        }
+
+        .pricing-card.featured .pricing-label {
+            color: var(--accent);
+        }
+
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .pricing-card.featured .pricing-features svg {
+            color: var(--accent);
+        }
+
+        .pricing-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: var(--soft-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing-period {
+            font-size: 0.85rem;
+            color: var(--soft-gray);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card.featured .pricing-period {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .pricing-features {
+            list-style: none;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--soft-gray);
+        }
+
+        .pricing-features svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-dark);
+            flex-shrink: 0;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 8rem 2rem;
+            text-align: center;
+            background: var(--ink);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -25%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 168, 124, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .cta .btn-primary {
+            background: var(--accent);
+            color: var(--ink);
+            position: relative;
+        }
+
+        .cta .btn-primary:hover {
+            background: var(--accent-dark);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem 2rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-left {
+            max-width: 400px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-left p {
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-disclaimer {
+            max-width: 1100px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            line-height: 1.6;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">Seora <span>AI</span></a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#download" class="nav-cta">Download</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Now Available on iOS</div>
+            <h1>Stop guessing.<br>Start <em>selling.</em></h1>
+            <p>Seora AI generates optimized titles, tags, and descriptions for your online listings — powered by AI, built for sellers who want results, not data to figure out.</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    Download on App Store
+                </a>
+                <a href="#features" class="btn-secondary">See Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLATFORMS -->
+    <div class="platforms">
+        <p>Generate listings for any platform</p>
+        <div class="platform-logos">
+            <span>Etsy</span>
+            <span>Amazon</span>
+            <span>eBay</span>
+            <span>Shopify</span>
+            <span>TikTok Shop</span>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <p class="section-label">Features</p>
+            <h2>Everything you need to list smarter</h2>
+            <p>From AI-powered SEO to real profit math — Seora gives you finished listings, not data to figure out.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <h3>AI SEO Generator</h3>
+                <p>Powered by Claude AI. Get optimized titles, 13 tags, and full descriptions tailored to your platform — ready to copy and paste in seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>Profit Calculator</h3>
+                <p>Know your real profit after every fee — production costs, shipping, Etsy transaction fees, payment processing, and offsite ads. No surprises.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <h3>Niche Calendar</h3>
+                <p>Never list late again. Seasonal deadlines for Valentine's Day, Mother's Day, Back to School, Christmas, and more — so you're always ahead.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Content Planner</h3>
+                <p>Plan a week of social media posts in 15 minutes. Stay consistent on Instagram, TikTok, and Pinterest without the overwhelm.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Trademark Checker</h3>
+                <p>Catch flagged words before you get a takedown notice. Protect your shop from costly intellectual property violations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+                <h3>Shop Settings</h3>
+                <p>Save your shop name, policies, shipping info, and returns once. Seora auto-fills them into every generated listing description.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <p class="section-label">How It Works</p>
+            <h2>Four steps to a perfect listing</h2>
+            <p>No learning curve. No data overload. Just results.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Set Up Your Shop</h3>
+                <p>Enter your shop name, policies, and shipping info once. Seora remembers it all.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Select Your Platform</h3>
+                <p>Choose Etsy, Amazon, eBay, Shopify, TikTok Shop, or any marketplace.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Enter Your Product</h3>
+                <p>Design name, product type, brand, audience — tell the AI about your item.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h3>Copy. Paste. Sell.</h3>
+                <p>Get a complete title, 13 tags, full description, and trending keywords instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <p class="section-label">Pricing</p>
+            <h2>Simple, honest pricing</h2>
+            <p>Start free. Upgrade when you're ready to scale.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <p class="pricing-label">Free</p>
+                <p class="pricing-price">$0</p>
+                <p class="pricing-period">Forever free</p>
+                <ul class="pricing-features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 3 AI-generated listings</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 shop profile</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Profit calculator</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Niche calendar</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Content planner</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <p class="pricing-label">Pro</p>
+                <p class="pricing-price">$9.99<span style="font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;opacity:0.6">/mo</span></p>
+                <p class="pricing-period">or $79.99/year — save 33%</p>
+                <ul class="pricing-features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unlimited AI listings</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Unlimited shop profiles</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Full AI SEO engine</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> All free features</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Priority support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="download">
+        <h2>Ready to list smarter?</h2>
+        <p>Join thousands of sellers who are done guessing at SEO.</p>
+        <a href="#" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Download on the App Store
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">Seora <span>AI</span></div>
+                <p>AI-powered SEO and profit tools for online sellers.</p>
+                <p>Contact: <a href="mailto:julie@seoraai.com" style="color:var(--accent);">julie@seoraai.com</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="mailto:julie@seoraai.com">Contact</a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            &copy; 2026 Seora AI. All rights reserved. Created by Julie Hines.<br>
+            The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.<br>
+            Amazon, eBay, Shopify, and TikTok Shop are trademarks of their respective owners.
+        </div>
+    </footer>
+
+</body>
+</html>
