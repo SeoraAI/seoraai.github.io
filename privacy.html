@@ -81,11 +81,11 @@
 </head>
 <body>
     <nav>
-        <a href="index.html" class="nav-logo">Seora <span>AI</span></a>
+        <a href="https://seora.tech/index.html" class="nav-logo">Seora <span>AI</span></a>
     </nav>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: March 31, 2026</p>
+        <p class="last-updated">Last updated: April 3, 2026</p>
 
         <p>Seora AI ("App," "we," "us," or "our") is operated by Julie Hines. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application and related services.</p>
 
@@ -93,59 +93,81 @@
         <p><strong>Account Information:</strong> When you create an account, we may collect your name, email address, and account preferences.</p>
         <p><strong>Shop Information:</strong> If you use the Shop Settings feature, we store your shop name, policies, shipping information, and return policies locally on your device and/or securely in our cloud infrastructure to auto-fill your listing descriptions.</p>
         <p><strong>Usage Data:</strong> We may collect anonymous usage data such as feature usage patterns, app performance metrics, and crash reports to improve the App.</p>
-        <p><strong>AI-Generated Content:</strong> When you use the AI SEO Generator, your product details are sent to our AI service provider (Anthropic/Claude) to generate listing content. We do not permanently store the content of your AI requests.</p>
+        <p><strong>AI-Generated Content — Data Sent to Third-Party AI Service:</strong> When you use the AI SEO Generator, the following product details are sent to Anthropic's Claude AI service to generate optimized listing content:</p>
+        <ul>
+            <li>Design name (the product name you enter)</li>
+            <li>Product type (e.g., T-Shirt, Sweatshirt)</li>
+            <li>Garment brand (e.g., Comfort Colors 1717)</li>
+            <li>Target audience (e.g., Unisex, Women)</li>
+            <li>Design description (if provided)</li>
+            <li>Shop settings (shop name, shipping policies, return policies)</li>
+        </ul>
+        <p><strong>No personal information, account credentials, device data, or identifying information is sent to the AI service.</strong> Only the product details you voluntarily enter into the generation form are transmitted. Before any data is sent, the App asks for your explicit consent via an in-app disclosure. You may decline, in which case no data is transmitted to the AI service.</p>
+        <p>The AI-generated content (listing title, tags, and description) is returned directly to your device and is not permanently stored on our servers or by Anthropic.</p>
+        <p><strong>Photos:</strong> If you upload a design image in the SEO Generator, the image is stored locally on your device for preview purposes only. Design images are not sent to any external service, including the AI service.</p>
 
         <h2>2. How We Use Your Information</h2>
         <p>We use your information to:</p>
         <ul>
             <li>Provide and maintain the App's features and services.</li>
-            <li>Process your AI listing generation requests.</li>
+            <li>Process your AI listing generation requests by sending product details to Anthropic's Claude AI, as described in Section 1.</li>
             <li>Save your shop settings for convenience across sessions.</li>
             <li>Process subscription payments through the Apple App Store.</li>
-            <li>Improve the App based on usage patterns and feedback.</li>
+            <li>Improve the App based on anonymous usage patterns and feedback.</li>
             <li>Communicate with you about your account or the App.</li>
         </ul>
 
         <h2>3. Information Sharing</h2>
-        <p>We do not sell, rent, or trade your personal information. We may share information with:</p>
+        <p>We do not sell, rent, or trade your personal information. We may share information with the following parties:</p>
         <ul>
-            <li><strong>AI Service Providers:</strong> Product details you enter are sent to Anthropic (Claude AI) to generate listing content. This data is processed according to Anthropic's privacy and data handling policies.</li>
-            <li><strong>Platform APIs:</strong> If you use features that connect to Etsy or other platforms, relevant listing data is transmitted to those platforms via their official APIs according to their terms of service.</li>
-            <li><strong>Apple:</strong> Subscription and payment processing is handled by Apple through the App Store.</li>
+            <li><strong>Anthropic (Claude AI):</strong> Product details you enter (design name, product type, garment brand, target audience, design description, and shop settings) are sent to Anthropic's Claude AI service solely to generate listing content. No personal data is transmitted. Anthropic processes this data according to their privacy and data handling policies, which provide protections equal to or greater than those described in this policy. Data is processed in real time and is not permanently stored by Anthropic or by Seora AI. You can review Anthropic's privacy practices at <a href="https://www.anthropic.com/privacy">anthropic.com/privacy</a>.</li>
+            <li><strong>Platform APIs:</strong> If you use features that connect to Etsy or other e-commerce platforms, relevant listing data is transmitted to those platforms via their official APIs according to their respective terms of service.</li>
+            <li><strong>Apple:</strong> Subscription and payment processing is handled entirely by Apple through the App Store. We do not collect or have access to your payment information.</li>
             <li><strong>Legal Requirements:</strong> We may disclose information if required by law or to protect our rights.</li>
         </ul>
 
-        <h2>4. Data Storage and Security</h2>
+        <h2>4. User Consent for AI Data Sharing</h2>
+        <p>Before the App sends any product data to Anthropic's Claude AI service for the first time, the App presents an in-app disclosure that:</p>
+        <ul>
+            <li>Clearly explains what data will be sent (product details only)</li>
+            <li>Identifies who the data is sent to (Anthropic's Claude AI)</li>
+            <li>Requests your explicit permission before any data is transmitted</li>
+        </ul>
+        <p>You may decline consent at any time. If you decline, the AI SEO Generator feature will not function, but all other features of the App (Profit Calculator, Niche Calendar, Content Planner, Shop Settings) will continue to work normally. You can reset your consent preference in the App's settings.</p>
+
+        <h2>5. Data Storage and Security</h2>
         <p>Your shop settings and preferences are stored securely using industry-standard encryption. We use Supabase for our cloud infrastructure, which provides enterprise-grade security. We implement reasonable safeguards to protect your information, but no method of electronic storage is 100% secure.</p>
 
-        <h2>5. Data Retention</h2>
-        <p>We retain your account information for as long as your account is active. AI-generated content is not permanently stored on our servers. You can request deletion of your account and associated data at any time by contacting us.</p>
+        <h2>6. Data Retention</h2>
+        <p>We retain your account information for as long as your account is active. AI-generated content is not permanently stored on our servers. Product details sent to Anthropic's Claude AI are processed in real time and are not retained by Anthropic after the response is generated. You can request deletion of your account and associated data at any time by contacting us.</p>
 
-        <h2>6. Your Rights</h2>
+        <h2>7. Your Rights</h2>
         <p>You have the right to:</p>
         <ul>
             <li>Access the personal information we hold about you.</li>
             <li>Request correction of inaccurate information.</li>
             <li>Request deletion of your account and data.</li>
             <li>Opt out of non-essential communications.</li>
+            <li>Decline consent for AI data sharing at any time.</li>
         </ul>
 
-        <h2>7. Children's Privacy</h2>
+        <h2>8. Children's Privacy</h2>
         <p>The App is not intended for use by anyone under the age of 18. We do not knowingly collect information from children. If you believe a child has provided us with personal information, please contact us immediately.</p>
 
-        <h2>8. Third-Party Links</h2>
+        <h2>9. Third-Party Links</h2>
         <p>The App may contain links to third-party websites or services. We are not responsible for the privacy practices of those third parties. We encourage you to review their privacy policies.</p>
 
-        <h2>9. Changes to This Policy</h2>
+        <h2>10. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. We will notify you of material changes by updating the "Last updated" date. Continued use of the App constitutes acceptance of the revised policy.</p>
 
-        <h2>10. Contact Us</h2>
+        <h2>11. Contact Us</h2>
         <p>If you have questions about this Privacy Policy or your data, contact us at:<br>
         <a href="mailto:support@seora.tech">support@seora.tech</a></p>
     </div>
     <footer>
         &copy; 2026 Seora AI. All rights reserved.<br>
-        The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.
+        The term "Etsy" is a trademark of Etsy, Inc. This application uses the Etsy API but is not endorsed or certified by Etsy, Inc.<br>
+        Amazon, eBay, Shopify, and TikTok Shop are trademarks of their respective owners.
     </footer>
 </body>
 </html>
